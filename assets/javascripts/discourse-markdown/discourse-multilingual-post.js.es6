@@ -45,7 +45,7 @@ export function setup(helper) {
           return
         }
         token.attrs = [
-          ['class', 'dmp-lang'],
+          ['class', 'dmp-lang', 'itemprop'],
           ['lang', lang]
         ]
         return true
