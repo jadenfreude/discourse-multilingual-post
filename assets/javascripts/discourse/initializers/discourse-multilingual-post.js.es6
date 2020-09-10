@@ -34,7 +34,7 @@ export default {
           $blocks.hide()
           $blocks.filter(`[lang="${displayLang}"]`).show()
 
-          /*
+          
           // If required, add the language select box at the top of the post
           const options = langs.map(lang => {
             const selected = lang === displayLang ? ' selected' : ''
@@ -46,11 +46,11 @@ export default {
               $blocks.filter(`[lang="${e.target.value}"]`).show()
             })
             .prependTo($elem)
-          */
+          
         },
         {
           id: 'discourse-multilingual-post',
-          onlyStream: false // Prevent decorating the post in the editor
+          onlyStream: true // Prevent decorating the post in the editor
         }
       )
     })
