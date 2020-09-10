@@ -50,7 +50,7 @@ export default {
         },
         {
           id: 'discourse-multilingual-post',
-          onlyStream: true // Prevent decorating the post in the editor
+          onlyStream: false // Prevent decorating the post in the editor
         }
       )
     })
