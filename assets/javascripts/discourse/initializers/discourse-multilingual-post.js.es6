@@ -13,7 +13,6 @@ export default {
 
     withPluginApi('0.8.30', api => {
       api.onPageChange(() =>{
-          switchLangPost();
           switchLangAnywhere();
         }
       );
