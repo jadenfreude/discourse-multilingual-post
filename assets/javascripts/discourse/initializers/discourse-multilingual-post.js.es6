@@ -13,42 +13,27 @@ export default {
 
     withPluginApi('0.8.30', api => {
       api.onPageChange(() =>{
-          switchLang($elem, helper);
+          switchLangPost();
+          switchLangAnywhere();
         }
       );
-      function switchLang($elem, helper) {
-        // Find all language blocks
-        const $blocks = $elem.find('.dmp-lang')
-        if (!$blocks.length) {
-          return
+      function switchLangAnywhere() {
+        const langElements = document.getElementsByClassName("dmp-lang");
+
+        for (var i = 0; i < langElements.length; i++) {
+         //console.log(langElements[i].lang);
+          langElements[i].hidden = true;
+          var langFound = false;
+                
+          if (userLang == langElements[i].lang) {
+            langElements[i].hidden = false;
+            var langFound = true;
+          }
         }
 
-        // Determine the language to display
-        const langs = $blocks
-          .map((i, el) => el.getAttribute('lang'))
-          .toArray()
-        const displayLang = langs.includes(userLang)
-          ? userLang
-          : langs.includes(defaultLang)
-          ? defaultLang
-          : langs[0]
-
-        // Hide all language, except for the one to display
-        $blocks.hide()
-        $blocks.filter(`[lang="${displayLang}"]`).show()
-
-        
-        // If required, add the language select box at the top of the post
-        const options = langs.map(lang => {
-          const selected = lang === displayLang ? ' selected' : ''
-          return `<option value="${lang}"${selected}>${lang}</option>`
-        })
-        $(`<select class="dmp-select">${options.join()}</select>`)
-          .change(e => {
-            $blocks.hide()
-            $blocks.filter(`[lang="${e.target.value}"]`).show()
-          })
-          .prependTo($elem)
+        if (!langFound) {
+          langElements[0].hidden = false;
+        }
       }
     })
   }
