@@ -3,6 +3,7 @@ import { withPluginApi } from 'discourse/lib/plugin-api'
 export default {
   name: 'discourse-multilingual-post',
   initialize(container, app) {
+    const siteSettings = container.lookup('site-settings:main')
     // If plugin is disabled, quit
     if (!SiteSettings['discourse_multilingual_post_enabled']) {
       return
