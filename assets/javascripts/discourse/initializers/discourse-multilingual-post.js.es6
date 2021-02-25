@@ -4,12 +4,12 @@ export default {
   name: 'discourse-multilingual-post',
   initialize(container, app) {
     // If plugin is disabled, quit
-    if (!app.SiteSettings['discourse_multilingual_post_enabled']) {
+    if (!SiteSettings['discourse_multilingual_post_enabled']) {
       return
     }
 
     const userLang = I18n.locale.substring(0, 2)
-    const defaultLang = app.SiteSettings.default_locale.substring(0, 2)
+    const defaultLang = SiteSettings.default_locale.substring(0, 2)
 
     withPluginApi('0.8.30', api => {
       api.onPageChange(() =>{
